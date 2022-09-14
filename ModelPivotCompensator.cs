@@ -26,7 +26,7 @@ class ModelPivotCompensator : MonoBehaviour {
         pos += this.offset;
         Transform parent = this.modelTransform.parent;
         if (parent != null) {
-            Matrix4x4 localToWorld = parent.localToWorldMatrix;
+            Matrix4x4 localToWorld = Matrix4x4.TRS(parent.position, parent.rotation, Vector3.one);
             this.modelTransform.position = localToWorld.MultiplyPoint(pos);
         } else this.modelTransform.position = pos;
     }
